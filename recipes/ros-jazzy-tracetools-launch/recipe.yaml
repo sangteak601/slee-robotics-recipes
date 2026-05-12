@@ -1,0 +1,37 @@
+schema_version: 1
+
+context:
+  version: "8.2.5"
+
+package:
+  name: ros-jazzy-tracetools-launch
+  version: ${{ version }}
+
+source:
+  url: https://github.com/ros2/ros2_tracing/archive/refs/tags/${{ version }}.tar.gz
+  sha256: 17061d5925ee8d97c540058736893887c733d9c4dbf64f4b2d9c09d9054bdafa
+
+build:
+  number: 0
+  script: build.sh
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+  run:
+    - python
+    - ros-jazzy-launch
+    - ros-jazzy-launch-ros
+    - ros-jazzy-tracetools-trace
+
+tests:
+  - script:
+      - python -c "import tracetools_launch"
+
+about:
+  homepage: https://github.com/ros2/ros2_tracing
+  license: Apache-2.0
+  summary: Launch integration for tracing
+  repository: https://github.com/ros2/ros2_tracing
