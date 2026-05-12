@@ -27,9 +27,10 @@ requirements:
     - ros-jazzy-tracetools-trace
 
 tests:
-  - script:
-      - test -f $PREFIX/lib/python*/site-packages/tracetools_launch/__init__.py
-      - test -f $PREFIX/share/tracetools_launch/package.xml
+  - package_contents:
+      files:
+        - lib/python*/site-packages/tracetools_launch/__init__.py
+        - share/tracetools_launch/package.xml
 
 about:
   homepage: https://github.com/ros2/ros2_tracing
