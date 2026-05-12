@@ -16,6 +16,9 @@ source:
 build:
   number: 0
   script: build.sh
+  prefix_detection:
+    ignore:
+      - bin/quicktype
 
 tests:
   - script:
