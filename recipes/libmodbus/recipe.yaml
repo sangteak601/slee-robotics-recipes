@@ -1,0 +1,42 @@
+schema_version: 1
+
+context:
+  version: "3.1.10"
+
+package:
+  name: libmodbus
+  version: ${{ version }}
+
+source:
+  url: https://github.com/stephane/libmodbus/releases/download/v${{ version }}/libmodbus-${{ version }}.tar.gz
+  sha256: e93503749cd89fda088cbf6125ff04b468f881dc5e5d62e8ae9aaae1a9d9fdd3
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - make
+    - autoconf
+    - automake
+    - libtool
+  host:
+    - libgcc-ng
+  run:
+    - libgcc-ng
+
+test:
+  commands:
+    - test -f $PREFIX/lib/libmodbus.so
+    - test -f $PREFIX/include/modbus/modbus.h
+    - pkg-config --modversion libmodbus | grep ${{ version }}
+  requires:
+    - pkg-config
+
+about:
+  homepage: https://libmodbus.org
+  license: LGPL-2.1-or-later
+  license_file: COPYING.LESSER
+  summary: A Modbus library for Linux, Mac OS, FreeBSD and Windows
+  repository: https://github.com/stephane/libmodbus
