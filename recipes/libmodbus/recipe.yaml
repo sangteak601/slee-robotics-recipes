@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/stephane/libmodbus/releases/download/v${{ version }}/libmodbus-${{ version }}.tar.gz
-  sha256: e93503749cd89fda088cbf6125ff04b468f881dc5e5d62e8ae9aaae1a9d9fdd3
+  sha256: 899be4e25ab7fe5799d43f9567510d6f063d2e8f56136dd726b6fd976f9b2253
 
 build:
   number: 0
