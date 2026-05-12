@@ -2,26 +2,20 @@ schema_version: 1
 
 context:
   version: "23.0.170"
+  node_version: "22.15.1"
 
 package:
   name: quicktype
   version: ${{ version }}
 
 source:
-  url: https://registry.npmjs.org/quicktype/-/quicktype-${{ version }}.tgz
-  # sha256 to be verified on first build
+  - url: https://nodejs.org/dist/v${{ node_version }}/node-v${{ node_version }}-linux-x64.tar.xz
+    sha256: 7dca2ab34ec817aa4781e2e99dfd34d349eff9be86e5d5fbaa7e96cae8ee3179
+    target_directory: node
 
 build:
   number: 0
   script: build.sh
-
-requirements:
-  build:
-    - nodejs
-  host:
-    - nodejs
-  run:
-    - nodejs
 
 tests:
   - script:
