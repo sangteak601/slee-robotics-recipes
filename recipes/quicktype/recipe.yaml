@@ -25,9 +25,9 @@ requirements:
   run:
     - nodejs
 
-test:
-  commands:
-    - quicktype --version
+tests:
+  - script:
+      - quicktype --version
 
 about:
   homepage: https://quicktype.io

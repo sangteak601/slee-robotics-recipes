@@ -26,13 +26,14 @@ requirements:
   run:
     - libgcc-ng
 
-test:
-  commands:
-    - test -f $PREFIX/lib/libmodbus.so
-    - test -f $PREFIX/include/modbus/modbus.h
-    - pkg-config --modversion libmodbus | grep ${{ version }}
-  requires:
-    - pkg-config
+tests:
+  - script:
+      - test -f $PREFIX/lib/libmodbus.so
+      - test -f $PREFIX/include/modbus/modbus.h
+      - pkg-config --modversion libmodbus | grep ${{ version }}
+    requirements:
+      run:
+        - pkg-config
 
 about:
   homepage: https://libmodbus.org

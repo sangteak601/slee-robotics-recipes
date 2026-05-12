@@ -1,4 +1,4 @@
-[project]
+[workspace]
 name = "slee-robotics-recipes"
 version = "0.1.0"
 description = "Rattler-build recipes for slee-robotics pixi channel"
