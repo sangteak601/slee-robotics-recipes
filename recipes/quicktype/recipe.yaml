@@ -1,0 +1,36 @@
+schema_version: 1
+
+context:
+  version: "23.0.170"
+
+package:
+  name: quicktype
+  version: ${{ version }}
+
+source:
+  url: https://registry.npmjs.org/quicktype/-/quicktype-${{ version }}.tgz
+  # sha256 to be verified on first build
+
+build:
+  number: 0
+  script: build.sh
+
+requirements:
+  build:
+    - nodejs
+    - npm
+  host:
+    - nodejs
+    - npm
+  run:
+    - nodejs
+
+test:
+  commands:
+    - quicktype --version
+
+about:
+  homepage: https://quicktype.io
+  license: Apache-2.0
+  summary: Generate types and converters from JSON, Schema, and GraphQL
+  repository: https://github.com/glideapps/quicktype
