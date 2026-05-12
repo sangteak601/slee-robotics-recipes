@@ -28,4 +28,5 @@ jobs:
           pixi run rattler-build upload prefix \
             -c slee-robotics \
             --api-key "${{ secrets.PREFIX_DEV_API_KEY }}" \
+            --skip-existing \
             output/**/*.conda
