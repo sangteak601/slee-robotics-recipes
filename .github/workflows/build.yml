@@ -7,11 +7,21 @@ on:
     branches: [main]
 
 jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      recipes: ${{ steps.find.outputs.recipes }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: find
+        run: echo "recipes=$(ls -d recipes/*/recipe.yaml | xargs -I{} dirname {} | xargs -I{} basename {} | jq -R -s -c 'split("\n")[:-1]')" >> "$GITHUB_OUTPUT"
+
   build:
+    needs: discover
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        recipe: [libmodbus, quicktype]
+        recipe: ${{ fromJson(needs.discover.outputs.recipes) }}
     steps:
       - uses: actions/checkout@v4
 
