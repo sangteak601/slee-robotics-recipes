@@ -14,7 +14,7 @@ source:
     target_directory: node
 
 build:
-  number: 0
+  number: 1
   script: build.sh
   prefix_detection:
     ignore:
