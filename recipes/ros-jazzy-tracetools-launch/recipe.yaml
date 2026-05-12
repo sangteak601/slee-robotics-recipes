@@ -28,7 +28,8 @@ requirements:
 
 tests:
   - script:
-      - python -c "import tracetools_launch"
+      - test -f $PREFIX/lib/python*/site-packages/tracetools_launch/__init__.py
+      - test -f $PREFIX/share/tracetools_launch/package.xml
 
 about:
   homepage: https://github.com/ros2/ros2_tracing
