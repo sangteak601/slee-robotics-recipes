@@ -1,0 +1,31 @@
+name: Build and Upload Recipes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        recipe: [libmodbus, quicktype]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: prefix-dev/setup-pixi@v0.8.1
+        with:
+          pixi-version: latest
+
+      - name: Build ${{ matrix.recipe }}
+        run: pixi run rattler-build build --recipe recipes/${{ matrix.recipe }}/recipe.yaml
+
+      - name: Upload to prefix.dev
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          pixi run rattler-build upload prefix \
+            -c slee-robotics \
+            --api-key "${{ secrets.PREFIX_DEV_API_KEY }}" \
+            output/**/*.conda
