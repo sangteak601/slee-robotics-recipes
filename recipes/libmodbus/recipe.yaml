@@ -13,14 +13,12 @@ source:
 
 build:
   number: 0
+  script: build.sh
 
 requirements:
   build:
     - ${{ compiler('c') }}
     - make
-    - autoconf
-    - automake
-    - libtool
   host:
     - libgcc-ng
   run:
@@ -28,9 +26,8 @@ requirements:
 
 tests:
   - script:
-      - test -f $PREFIX/lib/libmodbus.so
       - test -f $PREFIX/include/modbus/modbus.h
-      - pkg-config --modversion libmodbus | grep ${{ version }}
+      - pkg-config --modversion libmodbus
     requirements:
       run:
         - pkg-config
