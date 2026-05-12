@@ -1,0 +1,9 @@
+[project]
+name = "slee-robotics-recipes"
+version = "0.1.0"
+description = "Rattler-build recipes for slee-robotics pixi channel"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+rattler-build = ">=0.35"
