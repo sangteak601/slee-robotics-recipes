@@ -18,10 +18,8 @@ build:
 requirements:
   build:
     - nodejs
-    - npm
   host:
     - nodejs
-    - npm
   run:
     - nodejs
 
