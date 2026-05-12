@@ -15,6 +15,6 @@ mkdir -p "$PREFIX/bin"
 cat > "$PREFIX/bin/quicktype" << 'WRAPPER'
 #!/bin/bash
 SCRIPT_DIR="$(cd "$(dirname "$0")/../lib/quicktype" && pwd)"
-exec "$SCRIPT_DIR/node" "$SCRIPT_DIR/lib/node_modules/quicktype/dist/cli/index.js" "$@"
+exec "$SCRIPT_DIR/node" "$SCRIPT_DIR/lib/node_modules/quicktype/dist/index.js" "$@"
 WRAPPER
 chmod +x "$PREFIX/bin/quicktype"

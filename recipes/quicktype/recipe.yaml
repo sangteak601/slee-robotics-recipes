@@ -19,6 +19,7 @@ build:
   prefix_detection:
     ignore:
       - bin/quicktype
+      - "lib/quicktype/**"
 
 tests:
   - script:
