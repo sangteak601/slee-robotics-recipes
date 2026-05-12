@@ -30,7 +30,6 @@ tests:
       files:
         - site-packages/tracetools_trace/__init__.py
         - share/tracetools_trace/package.xml
-        - bin/trace
 
 about:
   homepage: https://github.com/ros2/ros2_tracing
