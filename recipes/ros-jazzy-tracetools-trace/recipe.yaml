@@ -13,6 +13,7 @@ source:
 
 build:
   number: 0
+  noarch: python
   script: build.sh
 
 requirements:
@@ -27,7 +28,7 @@ requirements:
 tests:
   - package_contents:
       files:
-        - lib/python*/site-packages/tracetools_trace/__init__.py
+        - site-packages/tracetools_trace/__init__.py
         - share/tracetools_trace/package.xml
         - bin/trace
 
