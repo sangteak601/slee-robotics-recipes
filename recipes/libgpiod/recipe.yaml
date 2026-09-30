@@ -1,0 +1,40 @@
+schema_version: 1
+
+context:
+  version: "1.6.5"
+
+package:
+  name: libgpiod
+  version: ${{ version }}
+
+source:
+  url: https://mirrors.edge.kernel.org/pub/software/libs/libgpiod/libgpiod-${{ version }}.tar.gz
+  sha256: 0ff70878f5a8fb0f6a8e2690e3190cbfc99ad8b6f39e0d2c2cb82e42842dd33b
+
+build:
+  number: 0
+  script: build.sh
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - make
+  host:
+    - libgcc-ng
+  run:
+    - libgcc-ng
+
+tests:
+  - script:
+      - test -f $PREFIX/include/gpiod.h
+      - pkg-config --modversion libgpiod
+    requirements:
+      run:
+        - pkg-config
+
+about:
+  homepage: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git
+  license: LGPL-2.1-or-later
+  license_file: COPYING
+  summary: C library and tools for interacting with the Linux GPIO character device
+  repository: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git
